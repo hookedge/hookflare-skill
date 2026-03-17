@@ -74,6 +74,16 @@ Discover a provider's events:
 hookflare providers describe stripe --json
 ```
 
+### Any other webhook service
+
+Not limited to the 5 built-in providers. For any service already sending webhooks to your agent, use generic HMAC verification:
+
+```bash
+hookflare connect my-service --secret my_signing_secret --to http://localhost:18789/webhook
+```
+
+For services with non-standard signature formats, the community can create custom providers with `defineProvider()` — a single file that defines verification method, event types, and payload schemas. See [Provider Design Guide](https://github.com/hookedge/hookflare/blob/main/packages/providers/DESIGN.md).
+
 ## Core Workflows
 
 ### Stripe payment alerts
